@@ -5,9 +5,7 @@ package com.test;
  */
 public class test {
     public static void main(String[] args) {
-        System.out.println("test");//111
-        //222
-        //333
-        //测试更新后的git上传
+        yiwei y1 = new yiwei();y1.Yiwei();
+
     }
 }
