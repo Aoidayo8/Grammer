@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--  经典练习，全选全不选-->
+<script src="jquery-1.7.2.js"></script>
+<script>
+  $(function (){
+    $("#checkedAllBox").prop("checked",true);
+    $Items=$(":checkbox[name='items']");
+
+    $("#checkedAllBtn").click(function(){
+      $Items.prop("checked",true);
+    });
+    $("#checkedNoBtn").click(function(){
+      $Items.prop("checked",false);
+    });
+
+    //全选/非全选
+    /*
+    问题
+    全选和全不选怎么和两个按钮联动?
+     */
+    $("#checkedAllBox").click(function (){
+      $Items.prop("checked",$(this).prop("checked"));
+    });
+
+    $("#checkedRevBtn").click(function(){
+      $Items.each(function (){
+        $(this).prop("checked",!($(this).prop("checked")));
+      })
+    });
+    $("#sendBtn").click(function (){
+      $Items.each(function (){
+        if($(this).prop("checked")==true)
+          alert($(this).val());
+      })
+    })
+    $Items.click(function (){
+      var flag1=($("[name='items']:checked").length==4);//全选的判断依据
+      var flag2=($("[name='items']:not(:checked)").length==4);//非全选的判断依据
+      // $("#checkedAllBox").prop("checked",flag1);
+      //不完善的地方在于,全不选的时候checkedAllBox没有选上
+      // 完善,使用两个的异或
+      var res=(flag1^flag2);
+      $("#checkedAllBox").prop("checked",res);
+      // $("#checkedAllBtn").prop("checked",flag1);
+      // $("#checkedNoBtn").prop("checked",flag2);
+
+
+    })
+
+  })
+</script>
+<body>
+<body>
+<form method="post" action="">
+  你爱好的运动是？<input type="checkbox" id="checkedAllBox" />全选/全不选
+  <br />
+  <input type="checkbox" name="items" value="足球" />足球
+  <input type="checkbox" name="items" value="篮球" />篮球
+  <input type="checkbox" name="items" value="羽毛球" />羽毛球
+  <input type="checkbox" name="items" value="乒乓球" />乒乓球
+  <br />
+  <input type="button" id="checkedAllBtn" value="全　选" />
+  <input type="button" id="checkedNoBtn" value="全不选" />
+  <input type="button" id="checkedRevBtn" value="反　选" />
+  <input type="button" id="sendBtn" value="提　交" />
+</form>
+</body>
+</body>
+</html>
