@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="jquery-1.7.2.js"></script>
+  <script>
+    $(function (){
+      let $options=$("select:eq(0) option");
+      let arr=[];
+      $options.each(function (){
+        arr.push(this);
+      });
+      arr.sort(function(a,b){
+        if(a["value"]<b["value"]) {
+          return -1;
+        }
+        else {
+          return 1;
+        }
+      });
+      for(let i=0;i<arr.length;i++)alert(arr[i].innerText);
+
+    })
+  </script>
+</head>
+<body>
+<div id="left">
+  <select multiple="multiple" name="sel01">
+    <option value="opt01">选项1</option>
+    <option value="opt02">选项2</option>
+    <option value="opt06">选项6</option>
+    <option value="opt03">选项3</option>
+    <option value="opt05">选项5</option>
+    <option value="opt07">选项7</option>
+    <option value="opt04">选项4</option>
+    <option value="opt08">选项8</option>
+  </select>
+
+  <button>选中添加到右边</button>
+  <button>全部添加到右边</button>
+</div>
+</body>
+</html>

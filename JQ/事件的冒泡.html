@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    div{
+      background: #99ff99;
+      width:300px;
+      height: 300px;
+    }
+    span{
+      background: #99ecff;
+      width:300px;
+      height:50px;
+    }
+  </style>
+  <script src="jquery-1.7.2.js"></script>
+  <script>
+    $(function () {
+      $("span").click(function () {
+        alert("span Click");
+        return false;
+      });
+      $("div").click(function () {
+        alert("div Click");
+      })
+
+    })
+  </script>
+</head>
+<body>
+  <div>
+    父元素
+    <span>这是嵌套的子元素</span>
+  </div>
+</body>
+</html>

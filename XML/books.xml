@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+    <book>
+        <id>1</id>
+        <author>flex</author>
+        <name>麻瓜与魔法</name>
+    </book>
+    <book>
+        <id>2</id>
+        <author>flex</author>
+        <name>实用魔文研究</name>
+    </book>
+    <book id="1" name="Harry Potter" author="JK.Rolin"/>
+</books>

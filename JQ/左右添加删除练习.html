@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Insert title here</title>
+  <style type="text/css">
+    select {
+      width: 100px;
+      height: 140px;
+    }
+
+    div {
+      width: 130px;
+      float: left;
+      text-align: center;
+    }
+  </style>
+  <script type="text/javascript" src="jquery-1.7.2.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      function sortValue(obj,arr){
+        arr=arr.sort(function(a,b){
+          if(a["value"]<b["value"])return -1;
+          return 1;
+        });
+        $(obj).empty();
+          for(let i=0;i<arr.length;i++) {
+            // alert(arr[i]["value"]);
+            $(arr[i]).appendTo($(obj));
+          }
+      }
+      //选中添加到右边
+      $("button:eq(0)").click(function(){
+        $("select[name=sel01] :selected").each(function(){
+          //alert(this);
+          $(this).appendTo("select[name=sel02]");
+        });
+
+
+
+        //对侧排序
+        let $options=$("select:eq(1) option");
+        let arr=[];
+        $options.each(function (){
+          arr.push(this);
+        });
+
+        sortValue($("select:eq(1)")[0],arr);
+
+        // arr=arr.sort(function(a,b){
+        //   // alert("compare"+a["value"]+b["value"]);
+        //   if(a["value"]<b["value"]) {
+        //     // alert("<");
+        //     return -1;
+        //   }
+        //   else {
+        //     // alert(">=");
+        //     return 1;
+        //   }
+        // });
+        // $("select:eq(1)").empty();
+        // for(let i=0;i<arr.length;i++) {
+        //   // alert(arr[i].innerText);
+        //   $(arr[i]).appendTo($("select:eq(1)"));
+        // }
+      });
+
+      //全部添加到右边
+      $("button:eq(1)").click(function(){
+        $("select[name=sel01] option").each(function(){
+          //alert(this);
+          $(this).appendTo("select[name=sel02]");
+
+          //对侧排序
+          let $options=$("select:eq(1) option");
+          let arr=[];
+          $options.each(function (){
+            arr.push(this);
+          });
+
+          sortValue($("select:eq(1)")[0],arr);
+        });
+      });
+
+      //选中删除到左边
+      $("button:eq(2)").click(function(){
+        $("select[name=sel02] :selected").each(function(){
+          //alert(this);
+          $(this).appendTo("select[name=sel01]");
+        });
+        //对侧排序
+        let $options=$("select:eq(0) option");
+        let arr=[];
+        $options.each(function (){
+          arr.push(this);
+        });
+
+        sortValue($("select:eq(0)")[0],arr);
+      });
+      //全部删除到左边
+      $("button:eq(3)").click(function(){
+        $("select[name=sel02] option").each(function(){
+          //alert(this);
+          $(this).appendTo("select[name=sel01]");
+          //对侧排序
+          let $options=$("select:eq(0) option");
+          let arr=[];
+          $options.each(function (){
+            arr.push(this);
+          });
+
+          sortValue($("select:eq(0)")[0],arr);
+        });
+      });
+    });
+
+  </script>
+</head>
+<body>
+
+<div id="left">
+  <select multiple="multiple" name="sel01">
+    <option value="opt1">选项1</option>
+    <option value="opt2">选项2</option>
+    <option value="opt3">选项3</option>
+    <option value="opt4">选项4</option>
+    <option value="opt5">选项5</option>
+    <option value="opt6">选项6</option>
+    <option value="opt7">选项7</option>
+    <option value="opt8">选项8</option>
+  </select>
+
+  <button>选中添加到右边</button>
+  <button>全部添加到右边</button>
+</div>
+<div id="rigth">
+  <select multiple="multiple" name="sel02">
+  </select>
+  <button>选中删除到左边</button>
+  <button>全部删除到左边</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  div{
+    background: #99ff99;
+    width:300px;
+    height: 300px;
+  }
+  span{
+    background: #99ecff;
+    width:300px;
+    height:50px;
+  }
+</style>
+<script src="jquery-1.7.2.js"></script>
+<script>
+  $(function () {
+    $("span").click(function (a) {
+      console.log(a);//不命名为event依旧是event参数
+      // alert("span Click");
+      return false;
+    });
+    // $("div").click(function () {
+    //   alert("div Click");
+    // })
+    $("div").bind("click mouseover",function (event) {
+      if(event.type=="mouseover"){
+        console.log("mouseover");
+      }else if(event.type=="click"){
+        console.log("click");
+      }
+
+    });
+  })
+</script>
+<body>
+<div>
+  父元素
+  <br/>
+  <span>这是嵌套的子元素</span>
+</div>
+</body>
+</html>
