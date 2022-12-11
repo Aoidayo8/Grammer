@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style >
+    div{
+      background: antiquewhite;
+    }
+  </style>
+  <script src="jquery-1.7.2.js"></script>
+  <script>
+    $(function (){
+      //appendTo
+      $("<h1>in DIV H1</h1>").appendTo("div");
+      //prependTo
+      $("<h1>in DIV H1</h1>").prependTo("div");
+
+      // empty()
+      $("div").empty();
+      $("div").text("new DIV");
+
+    });
+  </script>
+</head>
+<body>
+  <div>HERE IS DIV</div>
+</body>
+</html>
